@@ -96,23 +96,7 @@ namespace Projekt_1
 
         }
 
-        public virtual Statistics GetStatistic()
-        {
-            var result = new Statistics();
-            result.Average = 0.0;
-            result.Best = double.MinValue;
-            result.Worst = double.MaxValue;
-
-            foreach (var rating in ratingInGame)
-            {
-                result.Best = Math.Max(result.Best, rating);
-                result.Worst = Math.Min(result.Worst, rating);
-                result.Average += rating;
-            }
-            result.Average /= ratingInGame.Count;
-            return result;
-
-        }
+        
 
         //metoda zmiana imienia piłkarza ---- do poprawy żeby wpisywało poprawne imie
         public void changeName(string newName)
@@ -135,7 +119,7 @@ namespace Projekt_1
 
         }
 
-
+        
     }
 
 

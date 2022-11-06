@@ -41,7 +41,21 @@ namespace Projekt_1
         // tutaj obejrzec ostatnie filmy i jeszcze to poprawic!
         public override Statistics GetStatistic()
         {
-            throw new NotImplementedException();
+            var result = new Statistics();
+
+            using (var reader = File.OpenText($"{Name}.txt"))
+            {
+                var line = reader.ReadLine();
+                while (line != null)
+                {
+                    var number = double.Parse(line);
+                    result.Add(number);
+                    line = reader.ReadLine();
+
+                }
+            }
+
+            return result;
         }
 
     }
