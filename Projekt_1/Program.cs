@@ -6,7 +6,7 @@ player.LowRankAdded += OnRankAdded;
 
 EnterRating(player);
 
-var stats = player.GetStatistic();
+var stats = player.GetStatistics();
 Console.WriteLine($"Best: {stats.Best}");
 Console.WriteLine($"Worst: {stats.Worst}");
 Console.WriteLine($"Average: {stats.Average}");

@@ -10,6 +10,7 @@ namespace Projekt_1
         }
 
         public event LowRankAddedDelegade LowRankAdded;
+        public abstract Statistics GetStatistics();
         
         
         public string FullName

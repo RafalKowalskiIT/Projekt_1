@@ -43,7 +43,7 @@ namespace Projekt_1
                         return "Good player";
                     case var d when d >= 3:
                         return "Bad player";
-                        default: return "Rly bad statistics, shame";
+                    default: return "Rly bad statistics, shame";
                 }
             }
         }

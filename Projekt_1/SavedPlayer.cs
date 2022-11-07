@@ -14,6 +14,7 @@ namespace Projekt_1
         }
 
         public event LowRankAddedDelegade LowRankAdded;
+        
 
         public override void AddRating(string rating)
         {
@@ -38,8 +39,7 @@ namespace Projekt_1
 
         }
 
-        // tutaj obejrzec ostatnie filmy i jeszcze to poprawic!
-        public override Statistics GetStatistic()
+        public override Statistics GetStatistics()
         {
             var result = new Statistics();
 

@@ -3,7 +3,7 @@
     public interface IPlayer
     {
         void AddRating(string rating);
-        Statistics GetStatistic();
+        Statistics GetStatistics();
         string Name { get; set; }
         string Surname { get; set; }
         string Position { get; set; }
