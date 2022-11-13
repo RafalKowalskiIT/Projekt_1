@@ -13,7 +13,7 @@ namespace Projekt_1
         {
         }
 
-        public event LowRankAddedDelegade LowRankAdded;
+        public event RankAddedDelegade RankAdded;
         
 
         public override void AddRating(string rating)
@@ -21,17 +21,17 @@ namespace Projekt_1
             using (var writer = File.AppendText($"{Name}.txt"))
             {
                 writer.WriteLine(rating);
-                if (LowRankAdded != null)
+                if (RankAdded != null)
                 {
-                    LowRankAdded(this, new EventArgs());
+                    RankAdded(this, new EventArgs());
                 }
             }
             using (var writer = File.AppendText($"audit_{Name}.txt"))
             {
                 writer.WriteLine(rating);
-                if (LowRankAdded != null)
+                if (RankAdded != null)
                 {
-                    LowRankAdded(this, new EventArgs());
+                    RankAdded(this, new EventArgs());
 
                 }
                 writer.WriteLine(DateTime.UtcNow);

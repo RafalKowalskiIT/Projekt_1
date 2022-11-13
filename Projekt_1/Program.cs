@@ -2,7 +2,7 @@
 
 var player = new SavedPlayer("Robert", "Lewandowski", "Striker");
 
-player.LowRankAdded += OnRankAdded;
+player.RankAdded += OnRankAdded;
 
 EnterRating(player);
 
@@ -13,7 +13,7 @@ Console.WriteLine($"Average: {stats.Average}");
 
 static void OnRankAdded(object sender, EventArgs args)
 {
-    Console.WriteLine($"This is rly low rank!!");
+    Console.WriteLine($"Rank added!!");
 }
 
 static void EnterRating(SavedPlayer player)

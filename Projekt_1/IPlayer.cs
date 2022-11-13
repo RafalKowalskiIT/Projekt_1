@@ -9,7 +9,7 @@
         string Position { get; set; }
 
         public const string CLUB = "F.C. Barcelona";
-        event LowRankAddedDelegade LowRankAdded;
+        event RankAddedDelegade LowRankAdded;
 
 
     }

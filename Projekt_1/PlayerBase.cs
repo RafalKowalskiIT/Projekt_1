@@ -9,7 +9,7 @@ namespace Projekt_1
 
         }
 
-        public event LowRankAddedDelegade LowRankAdded;
+        public event RankAddedDelegade LowRankAdded;
         public abstract Statistics GetStatistics();
         
         

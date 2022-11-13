@@ -25,7 +25,7 @@ namespace Projekt_1
 
 
 
-    public delegate void LowRankAddedDelegade(object sender, EventArgs args);
+    public delegate void RankAddedDelegade(object sender, EventArgs args);
 
 
 }
