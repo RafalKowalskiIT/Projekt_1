@@ -3,7 +3,6 @@
 var player = new SavedPlayer("Robert", "Lewandowski", "Striker");
 
 player.RankAdded += OnRankAdded;
-
 EnterRating(player);
 
 var stats = player.GetStatistics();
@@ -32,3 +31,4 @@ static void EnterRating(SavedPlayer player)
 
     }
 }
+

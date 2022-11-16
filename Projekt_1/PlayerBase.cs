@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-
+ 
 namespace Projekt_1
 {
     public abstract class PlayerBase : DataObject, IPlayer
@@ -9,7 +9,10 @@ namespace Projekt_1
 
         }
 
-        public event RankAddedDelegade LowRankAdded;
+
+        public delegate void RankAddedDelegade(object sender, EventArgs args);
+
+        public event RankAddedDelegade RankAdded;
         public abstract Statistics GetStatistics();
         
         
@@ -20,8 +23,8 @@ namespace Projekt_1
                 return Name + " " + Surname;
             }
         }
-        private List<double> ratingInGame = new List<double>();
-        static List<Rating> GetRating()
+        public List<double> ratingInGame = new List<double>();
+        public static List<Rating> GetRating()
         {
             return new List<Rating>
             {
@@ -85,9 +88,9 @@ namespace Projekt_1
             {
                 ratingInGame.Add(grade);
 
-                if (LowRankAdded != null && grade < 3.0)
+                if (RankAdded != null && grade < 3.0)
                 {
-                    LowRankAdded(this, new EventArgs());
+                    RankAdded(this, new EventArgs());
                 }
             }
             else
