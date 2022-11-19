@@ -1,5 +1,6 @@
 ﻿using Projekt_1;
 
+
 var player = new SavedPlayer("Robert", "Lewandowski", "Striker");
 
 player.RankAdded += OnRankAdded;

@@ -24,82 +24,39 @@ namespace Projekt_1
             }
         }
         public List<double> ratingInGame = new List<double>();
-        public static List<Rating> GetRating()
-        {
-            return new List<Rating>
-            {
-                new Rating("0", 0),
-                new Rating("0+", 0.5),
-                new Rating("0.5", 0.5),
-                new Rating("1", 1),
-                new Rating("1+", 1.5),
-                new Rating("1.5", 1.5),
-                new Rating("2", 2),
-                new Rating("2+", 2.5),
-                new Rating("2.5", 2.5),
-                new Rating("3", 3),
-                new Rating("3+", 3.5),
-                new Rating("3.5", 3.5),
-                new Rating("4", 4),
-                new Rating("4+", 4.5),
-                new Rating("4.5", 4.5),
-                new Rating("5", 5),
-                new Rating("5+", 5.5),
-                new Rating("5.5", 5.5),
-                new Rating("6", 6),
-                new Rating("6+", 6.5),
-                new Rating("6.5", 6.5),
-                new Rating("7", 7),
-                new Rating("7+", 7.5),
-                new Rating("7.5", 7.5),
-                new Rating("8", 8),
-                new Rating("8+", 8.5),
-                new Rating("8.5", 8.5),
-                new Rating("9", 9),
-                new Rating("9+", 9.5),
-                new Rating("9.5", 9.5),
-                new Rating("10", 10),
-            };
-        }
+        
 
         public virtual void AddRating(string rating)
         {
-            List<Rating> ratingList = GetRating();
-            Console.WriteLine($"Add rate");
-            string rankInput = Console.ReadLine();
-
-            Rating selectRank = ratingList.FirstOrDefault(c => c.Grade == rankInput);
-            if (selectRank != null)
+            var stringCheckList = new List<string>()
+            { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "1+", "1-", "2+", "2-", "3+", "3-", "4+", "4-", "5-", "5+", "6-", "6+", "7-", "7+", "8-", "9+", "9-", "10-", "0+" };
+            if (stringCheckList.Contains(rating))
             {
-                Console.WriteLine($"Successfully added rate equal to {selectRank.Rate}");
-                ratingInGame.Add(selectRank.Rate);
-            }
-            else
-            {
-                throw new ArgumentException($"Invalid rating");
-
-            }
-
-            if (!double.TryParse(rankInput, out double grade))
-            {
-                throw new ArgumentException($"Invalid rating");
-            }
-            else if (grade >= 0 && grade <= 10.0)
-            {
-                ratingInGame.Add(grade);
-
-                if (RankAdded != null && grade < 3.0)
+                if (rating.Contains("+"))
                 {
-                    RankAdded(this, new EventArgs());
+                    var result = double.Parse(rating.Substring(0, 1));
+                    result += 0.5;
+                    this.ratingInGame.Add(result);
                 }
+                else if (rating.Contains("-"))
+                {
+                    var result = double.Parse(rating.Substring(0, 1));
+                    result -= 0.25;
+                    this.ratingInGame.Add(result);
+                }
+                else
+                {
+                    var result = double.Parse(rating.Substring(0, 1));
+                    this.ratingInGame.Add(result);
+                }
+
             }
             else
             {
-                throw new ArgumentException($"Invalid rating {nameof(rating)}.");
+                throw new ArgumentException("Invalid rating");
             }
-
+                        
         }
-
         
 
         //metoda zmiana imienia piłkarza ---- do poprawy żeby wpisywało poprawne imie
