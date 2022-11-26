@@ -1,32 +1,18 @@
-﻿using System.Diagnostics;
- 
+﻿using System.Reflection.PortableExecutable;
+
 namespace Projekt_1
 {
-    public abstract class PlayerBase : DataObject, IPlayer
+    public class InMemoryPlayer : PlayerBase
     {
-        public PlayerBase(string name, string surname, string position) : base(name, surname, position)
+        
+        public InMemoryPlayer(string name, string surname, string position) : base(name, surname, position)
         {
-
+           
         }
-
-
-        public delegate void RankAddedDelegade(object sender, EventArgs args);
-
         public event RankAddedDelegade RankAdded;
-        public abstract Statistics GetStatistics();
-        
-        
-        public string FullName
-        {
-            get
-            {
-                return Name + " " + Surname;
-            }
-        }
-        public List<double> ratingInGame = new List<double>();
         
 
-        public virtual void AddRating(string rating)
+        public override void AddRating(string rating)
         {
             var stringCheckList = new List<string>()
             { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "1+", "1-", "2+", "2-", "3+", "3-", "4+", "4-", "5-", "5+", "6-", "6+", "7-", "7+", "8-", "9+", "9-", "10-", "0+" };
@@ -37,56 +23,61 @@ namespace Projekt_1
                     var result = double.Parse(rating.Substring(0, 1));
                     result += 0.5;
                     this.ratingInGame.Add(result);
+                    if (RankAdded != null)
+                    {
+                        RankAdded(this, new EventArgs());
+                    }
                 }
                 else if (rating.Contains("-"))
                 {
                     var result = double.Parse(rating.Substring(0, 1));
                     result -= 0.25;
                     this.ratingInGame.Add(result);
+                    if (RankAdded != null)
+                    {
+                        RankAdded(this, new EventArgs());
+                    }
                 }
-                else 
+                else
                 {
                     var result = double.Parse(rating.Substring(0, 1));
                     this.ratingInGame.Add(result);
+                    if (RankAdded != null)
+                    {
+                        RankAdded(this, new EventArgs());
+                    }
                 }
-                
+
 
             }
             else if (rating.Contains("."))
             {
                 var result = double.Parse(rating);
                 this.ratingInGame.Add(result);
+                if (RankAdded != null)
+                {
+                    RankAdded(this, new EventArgs());
+                }
             }
             else
             {
                 throw new ArgumentException("Invalid rating");
             }
-                        
-        }
-        
 
-        public void changeName(string newName)
+        }
+        public override Statistics GetStatistics()
         {
-            foreach (var character in newName)
+            var result = new Statistics();
+           
+            for (var index = 0; index < ratingInGame.Count; index += 1)
             {
-                if (char.IsDigit(character))
-                {
-                    Console.WriteLine($"Character \"{character}\" in name {newName} is invalid ");
-
-                }
-                else if (char.IsLetter(character))
-                {
-                    this.Name = newName;
-                }
-
+                result.Add(ratingInGame[index]);
             }
-
-
-
+            
+            
+            return result;
         }
-
-        
+       
     }
-
-
 }
+
