@@ -10,12 +10,12 @@ namespace Projekt_1
            
         }
         public event RankAddedDelegade RankAdded;
-        
+               
 
         public override void AddRating(string rating)
         {
             var stringCheckList = new List<string>()
-            { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "1+", "1-", "2+", "2-", "3+", "3-", "4+", "4-", "5-", "5+", "6-", "6+", "7-", "7+", "8-", "9+", "9-", "10-", "0+" };
+            { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "1+", "1-", "2+", "2-", "3+", "3-", "4+", "4-", "5-", "5+", "6-", "6+", "7-", "7+", "8-", "8+", "9+", "9-", "10-", "0+" };
             if (stringCheckList.Contains(rating))
             {
                 if (rating.Contains("+"))
@@ -50,7 +50,7 @@ namespace Projekt_1
 
 
             }
-            else if (rating.Contains("."))
+            else if (rating.Contains('.') || double.Parse(rating) > 10)
             {
                 var result = double.Parse(rating);
                 this.ratingInGame.Add(result);

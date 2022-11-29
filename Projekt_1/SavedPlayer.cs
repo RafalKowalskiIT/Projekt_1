@@ -14,8 +14,7 @@ namespace Projekt_1
         }
 
         public event RankAddedDelegade RankAdded;
-
-
+        
         public override void AddRating(string rating)
         {
             var stringCheckList = new List<string>()
@@ -23,7 +22,7 @@ namespace Projekt_1
 
             using (var writer = File.AppendText($"{Name}.txt"))
             {
-                writer.WriteLine(rating);
+                
                 if (stringCheckList.Contains(rating))
                 {
                     if (rating.Contains("+"))
@@ -31,23 +30,27 @@ namespace Projekt_1
                         var result = double.Parse(rating.Substring(0, 1));
                         result += 0.5;
                         this.ratingInGame.Add(result);
+                        writer.WriteLine(result);
                     }
-                    else if (rating.Contains("-"))
+                    else if (rating.Contains('-'))
                     {
                         var result = double.Parse(rating.Substring(0, 1));
                         result -= 0.25;
                         this.ratingInGame.Add(result);
+                        writer.WriteLine(result);
                     }
                     else
                     {
                         var result = double.Parse(rating.Substring(0, 1));
                         this.ratingInGame.Add(result);
+                        writer.WriteLine(result);
                     }
                 }
-                else if (rating.Contains("."))
+                else if (rating.Contains('.') || double.Parse(rating) > 10)
                 {
                     var result = double.Parse(rating);
                     this.ratingInGame.Add(result);
+                    writer.WriteLine(result);
                 }
 
                 else

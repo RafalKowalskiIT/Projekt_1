@@ -1,7 +1,7 @@
 ﻿using Projekt_1;
 
 
-var player = new InMemoryPlayer("Robert", "Lewandowski", "Striker");
+var player = new SavedPlayer("Robert", "Lewandowski", "Striker");
 
 player.RankAdded += OnRankAdded;
 EnterRating(player);
@@ -15,6 +15,7 @@ static void OnRankAdded(object sender, EventArgs args)
 {
     Console.WriteLine($"Rank added!!");
 }
+
 
 static void EnterRating(IPlayer player)
 {

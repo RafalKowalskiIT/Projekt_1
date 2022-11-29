@@ -9,7 +9,7 @@ public class SavedPlayerTest
     public void Test1()
     {
         //arrane
-        var plr = new SavedPlayer("Robert", "Lewandowski", "FC");
+        var plr = new InMemoryPlayer("Robert", "Lewandowski", "FC");
         plr.AddRating("8+");
         plr.AddRating("1.5");
         plr.AddRating("7");
@@ -39,7 +39,7 @@ public class SavedPlayerTest
         Assert.NotSame(plr2 , plr1);
         Assert.False(Object.ReferenceEquals(plr2 , plr1));
 
-        Assert.NotSame(plr4 , plr3); //tutaj nie wiem dlaczego Same nie dzia³a
+        Assert.NotSame(plr4 , plr3);
 
     }
 
