@@ -10,7 +10,6 @@ namespace Projekt_1
     {
         public double Sum;
         public double Count;
-
         public double Best;
         public double Worst;
 
@@ -21,7 +20,6 @@ namespace Projekt_1
             Best = double.MinValue;
             Worst = double.MaxValue;
         }
-
 
         public double Average
         {
@@ -37,11 +35,11 @@ namespace Projekt_1
             {
                 switch (Average)
                 {
-                    case var d when d >= 9:
+                    case >= 9:
                         return "Top player";
-                    case var d when d >= 5:
+                    case >= 5:
                         return "Good player";
-                    case var d when d >= 3:
+                    case >= 3:
                         return "Bad player";
                     default: return "Rly bad statistics, shame";
                 }

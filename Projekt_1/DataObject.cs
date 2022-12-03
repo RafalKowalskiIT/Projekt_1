@@ -13,18 +13,10 @@ namespace Projekt_1
             this.Name = name;
             this.Surname = surname;
             this.Position = position;
-
         }
         public const string CLUB = "F.C. Barcelona";
-
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Position { get; set; }
-
     }
-
-
-
-
-
 }

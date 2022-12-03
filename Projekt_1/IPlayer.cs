@@ -9,10 +9,7 @@ namespace Projekt_1
         string Name { get; set; }
         string Surname { get; set; }
         string Position { get; set; }
-        public event RankAddedDelegade RankAdded;
-
-        public const string CLUB = "F.C. Barcelona";
-
+        public event RankAddedDelegade RankAdded;       
         public string FullName
         {
             get
@@ -20,9 +17,5 @@ namespace Projekt_1
                 return Name + " " + Surname;
             }
         }
-
-
-
     }
-
 }

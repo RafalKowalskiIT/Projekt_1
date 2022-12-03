@@ -9,13 +9,12 @@ EnterRating(player);
 var stats = player.GetStatistics();
 Console.WriteLine($"Best: {stats.Best}");
 Console.WriteLine($"Worst: {stats.Worst}");
-Console.WriteLine($"Average: {stats.Average} {stats.Rank}" );
+Console.WriteLine($"Average: {stats.Average} {stats.Rank}");
 
 static void OnRankAdded(object sender, EventArgs args)
 {
     Console.WriteLine($"Rank added!!");
 }
-
 
 static void EnterRating(IPlayer player)
 {
@@ -23,14 +22,11 @@ static void EnterRating(IPlayer player)
     {
         Console.WriteLine($"Hi, Enter rating for {player.FullName}");
         var rating = Console.ReadLine();
-
         if (rating == "q")
         {
             break;
         }
-
         player.AddRating(rating);
-
     }
 }
 

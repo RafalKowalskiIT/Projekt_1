@@ -14,15 +14,11 @@ namespace Projekt_1
         }
 
         public event RankAddedDelegade RankAdded;
-        
-        public override void AddRating(string rating)
-        {
-            var stringCheckList = new List<string>()
-            { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "1+", "1-", "2+", "2-", "3+", "3-", "4+", "4-", "5-", "5+", "6-", "6+", "7-", "7+", "8-", "8+", "9+", "9-", "10-", "0+"};
 
+        public override void AddRating(string rating)
+        {            
             using (var writer = File.AppendText($"{Name}.txt"))
             {
-                
                 if (stringCheckList.Contains(rating))
                 {
                     if (rating.Contains("+"))
@@ -46,19 +42,16 @@ namespace Projekt_1
                         writer.WriteLine(result);
                     }
                 }
-                else if (rating.Contains('.') || double.Parse(rating) > 10)
+                else if (rating.Contains('.') || double.Parse(rating) < 10)
                 {
                     var result = double.Parse(rating);
                     this.ratingInGame.Add(result);
                     writer.WriteLine(result);
                 }
-
                 else
                 {
                     throw new ArgumentException("Invalid rating");
-
                 }
-
             }
             using (var writer = File.AppendText($"audit_{Name}.txt"))
             {
@@ -70,8 +63,6 @@ namespace Projekt_1
                 }
                 writer.WriteLine(DateTime.UtcNow);
             }
-                       
-           
         }
 
         public override Statistics GetStatistics()
@@ -86,13 +77,10 @@ namespace Projekt_1
                     var number = double.Parse(line);
                     result.Add(number);
                     line = reader.ReadLine();
-
                 }
             }
-
             return result;
         }
-
     }
 }
 
